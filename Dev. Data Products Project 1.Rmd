@@ -1,0 +1,26 @@
+---
+title: "Map of Nigeria"
+author: "Omo Ofoegbu"
+date: "March 30th, 2017"
+output: html_document
+---
+
+```{r, echo = FALSE, message=FALSE}
+
+library(leaflet)
+
+
+Nigeria <- data.frame(states = c("Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", 
+"Bayelsa", "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara", "Osun", "Oyo"),
+pop = c(2833999, 3168101, 3920208, 4182032, 4676465, 1703358, 4219244, 4151193, 2888966, 4098391, 2173501, 3218332, 2384212, 3257298, 1405201, 2353879, 3934899, 4348649, 6066562, 9013534, 5792578, 3238628, 3278487, 2371089, 9383682, 1863275, 3950249, 3728098, 3441024, 3178712, 5185400, 3696999, 2300736, 2321591, 3259846, 3423535, 5591589),
+latitude = c(5.4, 9.3, 5.0, 6.3, 10.5, 4.9, 7.3, 11.5, 5.8, 5.5, 6.3, 6.5, 7.7, 6.5, 8.8, 10.3, 5.5, 12.0, 10.3, 11.5, 12.3, 11.5, 7.5, 8.5, 6.6, 8.5, 10.0, 7.0, 7.2, 9.2, 4.8, 13.1, 8.0, 12.0, 12.2, 7.5, 8.0),
+longitude = c(7.5, 12.5, 7.8, 7.0, 10.0, 5.9, 8.8, 13.0, 8.5, 6.0, 8.1, 6.0, 5.3,7.5,7.2, 11.2,7.0, 9.8, 7.8, 8.5, 7.5, 4.0, 6.7, 5.0, 3.8, 8.3, 6.0, 3.6, 5.1, 9.8, 6.8, 5.3, 10.5, 11.5, 6.3, 4.5, 4.0))
+
+
+Nigeria %>%
+leaflet() %>%
+addTiles() %>%
+addMarkers(popup = Nigeria$states, clusterOptions = markerClusterOptions()) %>% 
+addCircles(weight = 1, radius = sqrt(Nigeria$pop)*30)
+```
+
